@@ -15,13 +15,10 @@ _Invoke Phing targets_:
 
 > Targets: main
 
-> Phing Build File:
-
 > Properties: projectName=MY_PROJECT_NAME
 
 Or _Execute a shell script_:
 
-    // Shell script
     cd $WORKSPACE && phing main -DprojectName=$JOB_NAME
 
 * Now, you can customize each _fileset_ to fit your needs :-)
