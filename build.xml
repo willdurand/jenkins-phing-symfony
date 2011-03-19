@@ -17,7 +17,7 @@
        destdir="${project.basedir}/doc"
        sourcecode="yes"
        defaultpackagename="${projectName}"
-       output="HTML:Smarty/JEvolve:default">
+       output="HTML:Smarty:default">
      <fileset dir="./apps">
        <include name="**/*.class.php" />
      </fileset>

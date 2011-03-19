@@ -24,4 +24,10 @@ Or _Execute a shell script_:
 * Now, you can customize each _fileset_ to fit your needs :-)
 
 
+**NOTE:** I recommand you to use the amazing phpDocumentor theme [JEvolve](http://themouette.github.com/JEvolve/).
+To use it, just change the `ouput` parameter of the `phpdoc` task like the code below:
+
+    output="HTML:Smarty/JEvolve:default"
+
+
 William.
