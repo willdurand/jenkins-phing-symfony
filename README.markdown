@@ -23,6 +23,11 @@ Or _Execute a shell script_:
 
 * Now, you can customize each _fileset_ to fit your needs :-)
 
+Warning
+-------
+
+To use the `phploc` target, you have to install the [**PHPLoc Phing task**](https://github.com/raphaelstolt/phploc-phing).
+Just copy the `PHPLocTask.php` file somewhere like `/usr/share/php/phing/tasks/my/` (create the `my` directory if needed).
 
 TIPS
 ----
