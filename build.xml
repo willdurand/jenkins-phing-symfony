@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="${projectName}" default="main">
+  <!-- Properties -->
+  <property name="dir.reports" value="${project.basedir}/reports" />
+  <property name="dir.doc"     value="${project.basedir}/doc" />
   <!-- Clean target -->
   <target name="clean">
-    <delete dir="${project.basedir}/doc" />
-    <delete dir="${project.basedir}/build" />
-    <mkdir dir="${project.basedir}/build" />
+    <delete dir="${dir.doc}" />
+    <delete dir="${dir.reports}" />
+    <mkdir dir="${dir.reports}" />
+    <mkdir dir="${dir.doc}" />
   </target>
   <!-- Default target -->
   <target name="main" depends="clean,pdepend,phpmd,phpcpd,phpcs,phploc,phpdoc">
@@ -14,7 +18,7 @@
   <target name="phpdoc">
     <echo msg="PHP Documentor..." />
     <phpdoc title="Documentation of ${projectName}"
-      destdir="${project.basedir}/doc"
+      destdir="${dir.doc}"
       sourcecode="yes"
       defaultpackagename="${projectName}"
       output="HTML:Smarty:default">
@@ -41,7 +45,7 @@
   <!-- PHPLoc -->
   <target name="phploc">
     <taskdef name="phploc" classname="phing.tasks.my.PHPLocTask" />
-    <phploc reportType="csv" reportName="phploc" reportDirectory="${project.basedir}/build" countTests="true">
+    <phploc reportType="csv" reportName="phploc" reportDirectory="${dir.reports}" countTests="true">
       <fileset dir="${project.basedir}/apps">
         <include name="**/*.php" />
         <exclude name="**/Base*" />
@@ -68,7 +72,7 @@
         <exclude name="**/migration/**" />
         <exclude name="**/vendor/**" />
       </fileset>
-      <formatter type="xml" outfile="${project.basedir}/build/pmd.xml" />
+      <formatter type="xml" outfile="${dir.reports}/pmd.xml" />
     </phpmd>
   </target>
   <!-- PHP copy/paste analysis -->
@@ -85,7 +89,7 @@
         <exclude name="**/migration/**" />
         <exclude name="**/vendor/**" />
       </fileset>
-      <formatter type="pmd" outfile="${project.basedir}/build/pmd-cpd.xml" />
+      <formatter type="pmd" outfile="${dir.reports}/pmd-cpd.xml" />
     </phpcpd>
   </target>
   <!-- PHP dependency checker -->
@@ -102,9 +106,9 @@
         <exclude name="**/migration/**" />
         <exclude name="**/vendor/**" />
       </fileset>
-      <logger type="jdepend-xml" outfile="${project.basedir}/build/jdepend.xml" />
-      <logger type="jdepend-chart" outfile="${project.basedir}/build/dependencies.svg" />
-      <logger type="overview-pyramid" outfile="${project.basedir}/build/overview-pyramid.svg" />
+      <logger type="jdepend-xml" outfile="${dir.reports}/jdepend.xml" />
+      <logger type="jdepend-chart" outfile="${dir.reports}/dependencies.svg" />
+      <logger type="overview-pyramid" outfile="${dir.reports}/overview-pyramid.svg" />
     </phpdepend>
   </target>
   <!-- PHP CodeSniffer -->
@@ -125,7 +129,7 @@
         <exclude name="**/migration/**" />
         <exclude name="**/vendor/**" />
       </fileset>
-      <formatter type="checkstyle" outfile="${project.basedir}/build/checkstyle.xml" />
+      <formatter type="checkstyle" outfile="${dir.reports}/checkstyle.xml" />
     </phpcodesniffer>
   </target>
 </project>
