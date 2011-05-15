@@ -1,4 +1,4 @@
-Hudson/Phing for symfony 1.x
+Jenkins/Phing for symfony 1.x
 ============================
 
 This is a [**Phing**](http://phing.info/) `build.xml` for the [**symfony 1.x** framework](http://symfony-project.org/)
@@ -9,7 +9,7 @@ Usage
 
 * Copy the `build.xml` script in your project root directory.
 
-* In Hudson, add a **build step** like:
+* In Jenkins, add a **build step** like:
 
 _Invoke Phing targets_:
 
