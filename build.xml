@@ -22,25 +22,23 @@
       sourcecode="yes"
       defaultpackagename="${projectName}"
       output="HTML:Smarty:default">
-      <fileset dir="./apps">
-        <include name="**/*.class.php" />
-      </fileset>
-      <fileset dir="./lib/model">
-        <include name="**/*.php" />
-        <exclude name="**/Base*.class.php" />
-      </fileset>
-      <fileset dir="./lib/validator">
-        <include name="**/*.class.php" />
-      </fileset>
-      <fileset dir="./lib/form">
-        <include name="**/*.class.php" />
-        <exclude name="**/Base*.class.php" />
-      </fileset>
-      <fileset dir="./lib/filter">
-        <include name="**/*.php" />
-        <exclude name="**/*.class.php" />
+      <fileset dir="${project.basedir}">
+        <!-- includes -->
+        <include name="**/config/*.class.php" />
+        <include name="**/actions/*.class.php" />
+        <include name="**/lib/*.class.php" />
+        <!-- excludes -->
+        <exclude name="**/templates/*" />
+        <exclude name="**/lib/vendor/*" />
+        <exclude name="**/base/*" />
+        <exclude name="**/lib/model/map/*" />
+        <exclude name="**/lib/model/om/*" />
       </fileset>
     </phpdoc>
+  </target>
+  <target name="docblox">
+      <echo msg="DocBlox..." />
+      <exec command="docblox run -d ./apps/,./lib/ -t ${dir.doc} -i */templates/*,*/lib/vendor/*,*/base/*,*/lib/model/map*,*/lib/model/om/*,*/skeleton/*" />
   </target>
   <!-- PHPLoc -->
   <target name="phploc">
